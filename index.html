@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+          <script src="https://rawgit.com/aframevr/aframe/2baa063/dist/aframe-master.min.js"></script>
+    
+<script>
+  AFRAME.registerComponent('set-sky', {
+    schema: {default:''},
+    init() {
+      const sky = document.querySelector('a-sky');
+      this.el.addEventListener('click', () => {
+        sky.setAttribute('src', this.data);
+      });
+    }
+  });
+</script>
+</head>
+
+    <body>
+<a-scene>
+  <a-assets>
+        <audio id="blip1" src="lonesome.mp3"></audio>
+      </a-assets>
+      <!-- Sounds. -->
+      <a-entity sound="autoplay: true; src: #blip1;"></a-entity>
+  <a-camera position="0 2 4">
+    <a-cursor color="#4CC3D9" fuse="true" timeout="10"></a-cursor>
+  </a-camera>
+
+ 
+  <a-sphere color="black" radius="0.3" position="-4 2 0" set-sky="palace.jpg"></a-sphere>
+
+  <a-sphere color="red" radius="0.3" position="4 2 0" set-sky="ruin.jpg"></a-sphere>
+
+  <a-sky></a-sky>
+</a-scene>
+
+    </body>
+</html>
+
+
+
